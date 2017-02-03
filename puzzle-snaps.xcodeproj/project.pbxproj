@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A66548351E44026E002518D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66548341E44026E002518D9 /* AppDelegate.swift */; };
+		A66548371E44026E002518D9 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66548361E44026E002518D9 /* HomeController.swift */; };
+		A665483A1E44026E002518D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A66548381E44026E002518D9 /* Main.storyboard */; };
+		A665483D1E44026E002518D9 /* puzzle_snaps.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A665483B1E44026E002518D9 /* puzzle_snaps.xcdatamodeld */; };
+		A665483F1E44026E002518D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A665483E1E44026E002518D9 /* Assets.xcassets */; };
+		A66548421E44026E002518D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A66548401E44026E002518D9 /* LaunchScreen.storyboard */; };
+		A66548581E44026E002518D9 /* puzzle_snapsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66548571E44026E002518D9 /* puzzle_snapsUITests.swift */; };
+		A66548661E4422BD002518D9 /* homeControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66548651E4422BD002518D9 /* homeControllerTests.swift */; };
+		A66548681E4440FB002518D9 /* PuzzleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66548671E4440FB002518D9 /* PuzzleController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A66548491E44026E002518D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A66548291E44026E002518D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A66548301E44026E002518D9;
+			remoteInfo = "puzzle-snaps";
+		};
+		A66548541E44026E002518D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A66548291E44026E002518D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A66548301E44026E002518D9;
+			remoteInfo = "puzzle-snaps";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A66548311E44026E002518D9 /* puzzle-snaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "puzzle-snaps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A66548341E44026E002518D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A66548361E44026E002518D9 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		A66548391E44026E002518D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A665483C1E44026E002518D9 /* puzzle_snaps.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = puzzle_snaps.xcdatamodel; sourceTree = "<group>"; };
+		A665483E1E44026E002518D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A66548411E44026E002518D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A66548431E44026E002518D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A66548481E44026E002518D9 /* puzzle-snapsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "puzzle-snapsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A665484E1E44026E002518D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A66548531E44026E002518D9 /* puzzle-snapsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "puzzle-snapsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A66548571E44026E002518D9 /* puzzle_snapsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = puzzle_snapsUITests.swift; sourceTree = "<group>"; };
+		A66548591E44026E002518D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A66548651E4422BD002518D9 /* homeControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeControllerTests.swift; sourceTree = "<group>"; };
+		A66548671E4440FB002518D9 /* PuzzleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A665482E1E44026E002518D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A66548451E44026E002518D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A66548501E44026E002518D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A66548281E44026E002518D9 = {
+			isa = PBXGroup;
+			children = (
+				A66548331E44026E002518D9 /* puzzle-snaps */,
+				A665484B1E44026E002518D9 /* puzzle-snapsTests */,
+				A66548561E44026E002518D9 /* puzzle-snapsUITests */,
+				A66548321E44026E002518D9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A66548321E44026E002518D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A66548311E44026E002518D9 /* puzzle-snaps.app */,
+				A66548481E44026E002518D9 /* puzzle-snapsTests.xctest */,
+				A66548531E44026E002518D9 /* puzzle-snapsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A66548331E44026E002518D9 /* puzzle-snaps */ = {
+			isa = PBXGroup;
+			children = (
+				A66548341E44026E002518D9 /* AppDelegate.swift */,
+				A66548361E44026E002518D9 /* HomeController.swift */,
+				A66548671E4440FB002518D9 /* PuzzleController.swift */,
+				A66548381E44026E002518D9 /* Main.storyboard */,
+				A665483E1E44026E002518D9 /* Assets.xcassets */,
+				A66548401E44026E002518D9 /* LaunchScreen.storyboard */,
+				A66548431E44026E002518D9 /* Info.plist */,
+				A665483B1E44026E002518D9 /* puzzle_snaps.xcdatamodeld */,
+			);
+			path = "puzzle-snaps";
+			sourceTree = "<group>";
+		};
+		A665484B1E44026E002518D9 /* puzzle-snapsTests */ = {
+			isa = PBXGroup;
+			children = (
+				A665484E1E44026E002518D9 /* Info.plist */,
+				A66548651E4422BD002518D9 /* homeControllerTests.swift */,
+			);
+			path = "puzzle-snapsTests";
+			sourceTree = "<group>";
+		};
+		A66548561E44026E002518D9 /* puzzle-snapsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A66548571E44026E002518D9 /* puzzle_snapsUITests.swift */,
+				A66548591E44026E002518D9 /* Info.plist */,
+			);
+			path = "puzzle-snapsUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A66548301E44026E002518D9 /* puzzle-snaps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A665485C1E44026E002518D9 /* Build configuration list for PBXNativeTarget "puzzle-snaps" */;
+			buildPhases = (
+				A665482D1E44026E002518D9 /* Sources */,
+				A665482E1E44026E002518D9 /* Frameworks */,
+				A665482F1E44026E002518D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "puzzle-snaps";
+			productName = "puzzle-snaps";
+			productReference = A66548311E44026E002518D9 /* puzzle-snaps.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A66548471E44026E002518D9 /* puzzle-snapsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A665485F1E44026E002518D9 /* Build configuration list for PBXNativeTarget "puzzle-snapsTests" */;
+			buildPhases = (
+				A66548441E44026E002518D9 /* Sources */,
+				A66548451E44026E002518D9 /* Frameworks */,
+				A66548461E44026E002518D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A665484A1E44026E002518D9 /* PBXTargetDependency */,
+			);
+			name = "puzzle-snapsTests";
+			productName = "puzzle-snapsTests";
+			productReference = A66548481E44026E002518D9 /* puzzle-snapsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A66548521E44026E002518D9 /* puzzle-snapsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A66548621E44026E002518D9 /* Build configuration list for PBXNativeTarget "puzzle-snapsUITests" */;
+			buildPhases = (
+				A665484F1E44026E002518D9 /* Sources */,
+				A66548501E44026E002518D9 /* Frameworks */,
+				A66548511E44026E002518D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A66548551E44026E002518D9 /* PBXTargetDependency */,
+			);
+			name = "puzzle-snapsUITests";
+			productName = "puzzle-snapsUITests";
+			productReference = A66548531E44026E002518D9 /* puzzle-snapsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A66548291E44026E002518D9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Marek Newton";
+				TargetAttributes = {
+					A66548301E44026E002518D9 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = UDV9YM23HL;
+						ProvisioningStyle = Automatic;
+					};
+					A66548471E44026E002518D9 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = UDV9YM23HL;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A66548301E44026E002518D9;
+					};
+					A66548521E44026E002518D9 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = UDV9YM23HL;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A66548301E44026E002518D9;
+					};
+				};
+			};
+			buildConfigurationList = A665482C1E44026E002518D9 /* Build configuration list for PBXProject "puzzle-snaps" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A66548281E44026E002518D9;
+			productRefGroup = A66548321E44026E002518D9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A66548301E44026E002518D9 /* puzzle-snaps */,
+				A66548471E44026E002518D9 /* puzzle-snapsTests */,
+				A66548521E44026E002518D9 /* puzzle-snapsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A665482F1E44026E002518D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A66548421E44026E002518D9 /* LaunchScreen.storyboard in Resources */,
+				A665483F1E44026E002518D9 /* Assets.xcassets in Resources */,
+				A665483A1E44026E002518D9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A66548461E44026E002518D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A66548511E44026E002518D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A665482D1E44026E002518D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A66548371E44026E002518D9 /* HomeController.swift in Sources */,
+				A665483D1E44026E002518D9 /* puzzle_snaps.xcdatamodeld in Sources */,
+				A66548351E44026E002518D9 /* AppDelegate.swift in Sources */,
+				A66548681E4440FB002518D9 /* PuzzleController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A66548441E44026E002518D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A66548661E4422BD002518D9 /* homeControllerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A665484F1E44026E002518D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A66548581E44026E002518D9 /* puzzle_snapsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A665484A1E44026E002518D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A66548301E44026E002518D9 /* puzzle-snaps */;
+			targetProxy = A66548491E44026E002518D9 /* PBXContainerItemProxy */;
+		};
+		A66548551E44026E002518D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A66548301E44026E002518D9 /* puzzle-snaps */;
+			targetProxy = A66548541E44026E002518D9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A66548381E44026E002518D9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A66548391E44026E002518D9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A66548401E44026E002518D9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A66548411E44026E002518D9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A665485A1E44026E002518D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A665485B1E44026E002518D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A665485D1E44026E002518D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UDV9YM23HL;
+				INFOPLIST_FILE = "puzzle-snaps/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Marek.puzzle-snaps";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A665485E1E44026E002518D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UDV9YM23HL;
+				INFOPLIST_FILE = "puzzle-snaps/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Marek.puzzle-snaps";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		A66548601E44026E002518D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = UDV9YM23HL;
+				INFOPLIST_FILE = "puzzle-snapsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Marek.puzzle-snapsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/puzzle-snaps.app/puzzle-snaps";
+			};
+			name = Debug;
+		};
+		A66548611E44026E002518D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = UDV9YM23HL;
+				INFOPLIST_FILE = "puzzle-snapsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Marek.puzzle-snapsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/puzzle-snaps.app/puzzle-snaps";
+			};
+			name = Release;
+		};
+		A66548631E44026E002518D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = UDV9YM23HL;
+				INFOPLIST_FILE = "puzzle-snapsUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Marek.puzzle-snapsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "puzzle-snaps";
+			};
+			name = Debug;
+		};
+		A66548641E44026E002518D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = UDV9YM23HL;
+				INFOPLIST_FILE = "puzzle-snapsUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Marek.puzzle-snapsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "puzzle-snaps";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A665482C1E44026E002518D9 /* Build configuration list for PBXProject "puzzle-snaps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A665485A1E44026E002518D9 /* Debug */,
+				A665485B1E44026E002518D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A665485C1E44026E002518D9 /* Build configuration list for PBXNativeTarget "puzzle-snaps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A665485D1E44026E002518D9 /* Debug */,
+				A665485E1E44026E002518D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A665485F1E44026E002518D9 /* Build configuration list for PBXNativeTarget "puzzle-snapsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A66548601E44026E002518D9 /* Debug */,
+				A66548611E44026E002518D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A66548621E44026E002518D9 /* Build configuration list for PBXNativeTarget "puzzle-snapsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A66548631E44026E002518D9 /* Debug */,
+				A66548641E44026E002518D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A665483B1E44026E002518D9 /* puzzle_snaps.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A665483C1E44026E002518D9 /* puzzle_snaps.xcdatamodel */,
+			);
+			currentVersion = A665483C1E44026E002518D9 /* puzzle_snaps.xcdatamodel */;
+			path = puzzle_snaps.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A66548291E44026E002518D9 /* Project object */;
+}
