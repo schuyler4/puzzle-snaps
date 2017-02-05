@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,27 +19,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <button key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aQz-rC-9hh">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="newButtonOnCLick:" destination="KUk-VC-AqJ" eventType="touchUpInside" id="ZKC-9f-r67"/>
                             </connections>
                         </button>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CQK-Lh-yFX">
+                            <rect key="frame" x="0.0" y="198" width="375" height="66"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="cameraRollButtonOnClick:" destination="KUk-VC-AqJ" eventType="touchUpInside" id="O5I-Ju-fHQ"/>
+                            </connections>
+                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="113" id="KEk-vG-hPD">
-                                <rect key="frame" x="0.0" y="72" width="375" height="113"/>
+                                <rect key="frame" x="0.0" y="85" width="375" height="113"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KEk-vG-hPD" id="RqN-tz-iBj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="imageView" translatesAutoresizingMaskIntoConstraints="NO" id="AL6-WD-L2W">
-                                            <rect key="frame" x="26" y="8" width="107" height="96"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <accessibility key="accessibilityConfiguration" identifier="imageView"/>
-                                        </imageView>
-                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -50,12 +52,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcD-LV-53G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="93.599999999999994" y="132.68365817091455"/>
+            <point key="canvasLocation" x="85.599999999999994" y="132.68365817091455"/>
         </scene>
-        <!--View Controller-->
+        <!--Puzzle Controller-->
         <scene sceneID="5Dd-dx-soU">
             <objects>
-                <viewController storyboardIdentifier="puzzleView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TZI-sO-Iru" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="puzzleView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TZI-sO-Iru" customClass="PuzzleController" customModule="puzzle_snaps" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u3W-Gn-3Rp"/>
                         <viewControllerLayoutGuide type="bottom" id="7Ug-7A-uXF"/>
@@ -64,27 +66,135 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dc7-aa-4Z3">
-                                <rect key="frame" x="16" y="20" width="343" height="305"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09g-vl-j0I">
-                                <rect key="frame" x="0.0" y="637" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09g-vl-j0I">
+                                <rect key="frame" x="0.0" y="629" width="63" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="09g-vl-j0I" secondAttribute="height" multiplier="8:5" constant="2.1999999999999957" id="ChW-2c-tEM"/>
+                                    <constraint firstAttribute="width" secondItem="09g-vl-j0I" secondAttribute="height" multiplier="21:13" constant="1.6153846153846132" id="wDG-PY-eR0"/>
+                                </constraints>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="KUk-VC-AqJ" kind="show" id="Y9X-s6-Xz9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sg8-2z-flT">
+                                <rect key="frame" x="301" y="625" width="74" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="UAh-QC-aEd"/>
+                                    <constraint firstAttribute="height" constant="42" id="q2F-th-Ovp"/>
+                                </constraints>
+                                <state key="normal" title="Scramble"/>
+                                <connections>
+                                    <action selector="scrambleButtonClicked:" destination="TZI-sO-Iru" eventType="touchUpInside" id="JLm-D6-8GF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3b-8O-rkH">
+                                <rect key="frame" x="142" y="189" width="91" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="91" id="GTF-gd-u6j"/>
+                                    <constraint firstAttribute="height" constant="87" id="gGN-Hm-BkL"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sg8-2z-flT">
-                                <rect key="frame" x="329" y="637" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGh-2T-Ib5">
+                                <rect key="frame" x="241" y="284" width="91" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="Iwm-e9-iA3"/>
+                                    <constraint firstAttribute="width" constant="91" id="T5e-Gh-cJr"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0F-js-aeZ">
+                                <rect key="frame" x="43" y="379" width="91" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="91" id="0ux-Vb-rJ2"/>
+                                    <constraint firstAttribute="height" constant="87" id="Lt2-iy-i0Q"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAo-CK-Rhb">
+                                <rect key="frame" x="241" y="379" width="91" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="91" id="efX-4z-DSN"/>
+                                    <constraint firstAttribute="height" constant="87" id="mS5-ee-djd"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSg-fB-RUe">
+                                <rect key="frame" x="142" y="284" width="91" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="M2v-fj-uLh"/>
+                                    <constraint firstAttribute="width" constant="91" id="af1-zE-FRN"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rzW-U8-o6d">
+                                <rect key="frame" x="43" y="284" width="91" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="Tcl-54-Cr4"/>
+                                    <constraint firstAttribute="width" constant="91" id="tbY-Ie-Eu9"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Olf-La-y7a">
+                                <rect key="frame" x="241" y="189" width="91" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="iNq-wf-HV9"/>
+                                    <constraint firstAttribute="width" constant="91" id="u4I-YJ-O46"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgY-UU-iA5">
+                                <rect key="frame" x="142" y="379" width="91" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="Pol-Wb-uMJ"/>
+                                    <constraint firstAttribute="width" constant="91" id="YCB-pR-gZm"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Sg8-2z-flT" secondAttribute="trailing" id="0By-yc-EN7"/>
+                            <constraint firstItem="7Ug-7A-uXF" firstAttribute="top" secondItem="09g-vl-j0I" secondAttribute="bottom" id="2yd-oh-CKI"/>
+                            <constraint firstItem="U0F-js-aeZ" firstAttribute="top" secondItem="rzW-U8-o6d" secondAttribute="bottom" constant="8" id="6XX-fB-oU8"/>
+                            <constraint firstItem="VAo-CK-Rhb" firstAttribute="top" secondItem="XGh-2T-Ib5" secondAttribute="bottom" constant="8" id="7or-Uj-0Zm"/>
+                            <constraint firstItem="y3b-8O-rkH" firstAttribute="centerX" secondItem="tL4-XA-W4k" secondAttribute="centerX" id="C0y-sR-Zu1"/>
+                            <constraint firstItem="XGh-2T-Ib5" firstAttribute="centerY" secondItem="tL4-XA-W4k" secondAttribute="centerY" constant="-6" id="CgK-Eh-QCU"/>
+                            <constraint firstItem="XGh-2T-Ib5" firstAttribute="leading" secondItem="qSg-fB-RUe" secondAttribute="trailing" constant="8" id="D6A-eQ-x9S"/>
+                            <constraint firstItem="7Ug-7A-uXF" firstAttribute="top" secondItem="09g-vl-j0I" secondAttribute="bottom" id="DaP-Lq-JXD"/>
+                            <constraint firstItem="DgY-UU-iA5" firstAttribute="centerX" secondItem="tL4-XA-W4k" secondAttribute="centerX" id="DsD-pf-G6t"/>
+                            <constraint firstItem="DgY-UU-iA5" firstAttribute="leading" secondItem="U0F-js-aeZ" secondAttribute="trailing" constant="8" id="Enl-p1-7b8"/>
+                            <constraint firstItem="VAo-CK-Rhb" firstAttribute="leading" secondItem="DgY-UU-iA5" secondAttribute="trailing" constant="8" id="Fba-Sa-ozY"/>
+                            <constraint firstItem="qSg-fB-RUe" firstAttribute="centerY" secondItem="tL4-XA-W4k" secondAttribute="centerY" constant="-6" id="GdB-Ih-E4C"/>
+                            <constraint firstAttribute="trailing" secondItem="Sg8-2z-flT" secondAttribute="trailing" id="GiO-sy-eJI"/>
+                            <constraint firstItem="qSg-fB-RUe" firstAttribute="leading" secondItem="rzW-U8-o6d" secondAttribute="trailing" constant="8" id="Sey-FG-OFA"/>
+                            <constraint firstItem="qSg-fB-RUe" firstAttribute="top" secondItem="y3b-8O-rkH" secondAttribute="bottom" constant="8" id="Sx8-5S-S8R"/>
+                            <constraint firstItem="Olf-La-y7a" firstAttribute="leading" secondItem="y3b-8O-rkH" secondAttribute="trailing" constant="8" id="b4e-qR-glf"/>
+                            <constraint firstItem="XGh-2T-Ib5" firstAttribute="top" secondItem="Olf-La-y7a" secondAttribute="bottom" constant="8" id="bEv-Zd-d6b"/>
+                            <constraint firstItem="qSg-fB-RUe" firstAttribute="centerX" secondItem="tL4-XA-W4k" secondAttribute="centerX" id="lQu-rS-HMA"/>
+                            <constraint firstItem="Sg8-2z-flT" firstAttribute="bottom" secondItem="7Ug-7A-uXF" secondAttribute="top" id="mrf-4u-sKM"/>
+                            <constraint firstItem="DgY-UU-iA5" firstAttribute="top" secondItem="qSg-fB-RUe" secondAttribute="bottom" constant="8" id="pX8-eP-6Pi"/>
+                            <constraint firstItem="09g-vl-j0I" firstAttribute="leading" secondItem="tL4-XA-W4k" secondAttribute="leading" id="tOb-JV-rjY"/>
+                            <constraint firstItem="09g-vl-j0I" firstAttribute="leading" secondItem="tL4-XA-W4k" secondAttribute="leading" id="vfk-TH-1MM"/>
+                            <constraint firstItem="7Ug-7A-uXF" firstAttribute="top" secondItem="Sg8-2z-flT" secondAttribute="bottom" id="wQa-3g-21m"/>
+                            <constraint firstItem="rzW-U8-o6d" firstAttribute="centerY" secondItem="tL4-XA-W4k" secondAttribute="centerY" constant="-6" id="zsr-TD-1D3"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outletCollection property="imageButtons" destination="y3b-8O-rkH" collectionClass="NSMutableArray" id="KCn-eg-WYt"/>
+                        <outletCollection property="imageButtons" destination="Olf-La-y7a" collectionClass="NSMutableArray" id="Ltj-dW-hcr"/>
+                        <outletCollection property="imageButtons" destination="rzW-U8-o6d" collectionClass="NSMutableArray" id="UGP-NH-VaF"/>
+                        <outletCollection property="imageButtons" destination="qSg-fB-RUe" collectionClass="NSMutableArray" id="0YK-Eh-SDS"/>
+                        <outletCollection property="imageButtons" destination="XGh-2T-Ib5" collectionClass="NSMutableArray" id="JBH-9T-Vri"/>
+                        <outletCollection property="imageButtons" destination="U0F-js-aeZ" collectionClass="NSMutableArray" id="WcR-Gi-xnf"/>
+                        <outletCollection property="imageButtons" destination="DgY-UU-iA5" collectionClass="NSMutableArray" id="IwS-nK-zgP"/>
+                        <outletCollection property="imageButtons" destination="VAo-CK-Rhb" collectionClass="NSMutableArray" id="ac5-XW-DCd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5NV-vC-qAi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="768.79999999999995" y="132.68365817091455"/>
+            <point key="canvasLocation" x="768.79999999999995" y="117.39130434782609"/>
         </scene>
     </scenes>
 </document>

@@ -38,6 +38,7 @@ class HomeController: UITableViewController, UIImagePickerControllerDelegate,
         }
         
         images = loadImages()
+        
     }
     
     var pickedImage: UIImage = UIImage()
@@ -48,8 +49,6 @@ class HomeController: UITableViewController, UIImagePickerControllerDelegate,
             let imagePicker: UIImagePickerController = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-            images = loadImages()
-            tableView.reloadData()
             self.present(imagePicker, animated: true, completion: nil)
         } else {
             let alert: UIAlertController = UIAlertController(title:
@@ -57,6 +56,21 @@ class HomeController: UITableViewController, UIImagePickerControllerDelegate,
                                     preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func cameraRollButtonOnClick(_ sender: Any) {
+        if !UIImagePickerController.isSourceTypeAvailable(
+            UIImagePickerControllerSourceType.photoLibrary) {
+            print("photo library not avalible")
+        } else {
+            let imagePicker: UIImagePickerController = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            images = loadImages()
+            tableView.reloadData()
+            self.present(imagePicker, animated: true, completion: nil)
         }
     }
     
@@ -70,11 +84,17 @@ class HomeController: UITableViewController, UIImagePickerControllerDelegate,
             let data: Data? = UIImagePNGRepresentation(pickedImage)
             FileManager.default.createFile(atPath: imagePath, contents: data,
                                                                 attributes: nil)
+            print("saved image")
         }
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "puzzleView") as! PuzzleController
-        vc.image = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
-        self.present(vc, animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "puzzleView") as! PuzzleController
+            vc.image = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
+            self.images = self.loadImages()
+            vc.image = self.images[self.images.count - 1]
+            self.present(vc, animated: true, completion: nil)
+        }
+        
     }
     
     func loadImages() -> Array<UIImage> {
@@ -100,23 +120,27 @@ class HomeController: UITableViewController, UIImagePickerControllerDelegate,
         }
     }
     
-    /*override func tableView(_ tableView: UITableView, numberOfRowsInSection
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection
         section: Int) -> Int {
         return images.count
-    }*/
+    }
     
-    /*override func tableView(_ tableView: UITableView, cellForRowAt indexPath:
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath:
         IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-        print(cell)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
         let image = images[indexPath.row] as UIImage
-        print(image)
         let imageView = UIImageView(image: image)
-        imageView.frame = CGRect(x: 10, y: 10, width: image.size.width,
-                                 height: image.size.height)
+        imageView.frame = CGRect(x: 10, y: 10, width: 100, height: 100)
         cell?.addSubview(imageView)
+        
         return cell!
-    }*/
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "puzzleView") as! PuzzleController
+        vc.image = images[indexPath.row]
+        self.present(vc, animated: true, completion: nil)
+    }
 }
 

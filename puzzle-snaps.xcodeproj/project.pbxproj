@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6400E7C1E454E9200EA72B1 /* PuzzleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6400E7B1E454E9200EA72B1 /* PuzzleController.swift */; };
 		A66548351E44026E002518D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66548341E44026E002518D9 /* AppDelegate.swift */; };
 		A66548371E44026E002518D9 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66548361E44026E002518D9 /* HomeController.swift */; };
 		A665483A1E44026E002518D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A66548381E44026E002518D9 /* Main.storyboard */; };
@@ -15,7 +16,6 @@
 		A66548421E44026E002518D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A66548401E44026E002518D9 /* LaunchScreen.storyboard */; };
 		A66548581E44026E002518D9 /* puzzle_snapsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66548571E44026E002518D9 /* puzzle_snapsUITests.swift */; };
 		A66548661E4422BD002518D9 /* homeControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66548651E4422BD002518D9 /* homeControllerTests.swift */; };
-		A66548681E4440FB002518D9 /* PuzzleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66548671E4440FB002518D9 /* PuzzleController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A6400E7B1E454E9200EA72B1 /* PuzzleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleController.swift; sourceTree = "<group>"; };
 		A66548311E44026E002518D9 /* puzzle-snaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "puzzle-snaps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A66548341E44026E002518D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A66548361E44026E002518D9 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -50,7 +51,6 @@
 		A66548571E44026E002518D9 /* puzzle_snapsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = puzzle_snapsUITests.swift; sourceTree = "<group>"; };
 		A66548591E44026E002518D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A66548651E4422BD002518D9 /* homeControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeControllerTests.swift; sourceTree = "<group>"; };
-		A66548671E4440FB002518D9 /* PuzzleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,7 @@
 			children = (
 				A66548341E44026E002518D9 /* AppDelegate.swift */,
 				A66548361E44026E002518D9 /* HomeController.swift */,
-				A66548671E4440FB002518D9 /* PuzzleController.swift */,
+				A6400E7B1E454E9200EA72B1 /* PuzzleController.swift */,
 				A66548381E44026E002518D9 /* Main.storyboard */,
 				A665483E1E44026E002518D9 /* Assets.xcassets */,
 				A66548401E44026E002518D9 /* LaunchScreen.storyboard */,
@@ -272,7 +272,7 @@
 				A66548371E44026E002518D9 /* HomeController.swift in Sources */,
 				A665483D1E44026E002518D9 /* puzzle_snaps.xcdatamodeld in Sources */,
 				A66548351E44026E002518D9 /* AppDelegate.swift in Sources */,
-				A66548681E4440FB002518D9 /* PuzzleController.swift in Sources */,
+				A6400E7C1E454E9200EA72B1 /* PuzzleController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +526,7 @@
 				A665485E1E44026E002518D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A665485F1E44026E002518D9 /* Build configuration list for PBXNativeTarget "puzzle-snapsTests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +535,7 @@
 				A66548611E44026E002518D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A66548621E44026E002518D9 /* Build configuration list for PBXNativeTarget "puzzle-snapsUITests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +544,7 @@
 				A66548641E44026E002518D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
