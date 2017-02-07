@@ -7,6 +7,96 @@
 //
 
 import UIKit
+import Darwin
+
+extension UIImage {
+    func fixOrientation() -> UIImage {
+        
+        guard let cgImage = cgImage else { return self }
+        
+        if imageOrientation == .up { return self }
+        
+        var transform = CGAffineTransform.identity
+        
+        switch imageOrientation {
+            
+        case .down, .downMirrored:
+            transform = transform.translatedBy(x: size.width, y: size.height)
+            transform = transform.rotated(by: CGFloat(M_PI))
+            
+        case .left, .leftMirrored:
+            transform = transform.translatedBy(x: size.width, y: 0)
+            transform = transform.rotated(by: CGFloat(M_PI_2))
+            
+        case .right, .rightMirrored:
+            transform = transform.translatedBy(x: 0, y: size.height)
+            transform = transform.rotated(by: CGFloat(-M_PI_2))
+            
+        case .up, .upMirrored:
+            break
+        }
+        
+        switch imageOrientation {
+            
+        case .upMirrored, .downMirrored:
+            transform.translatedBy(x: size.width, y: 0)
+            transform.scaledBy(x: -1, y: 1)
+            
+        case .leftMirrored, .rightMirrored:
+            transform.translatedBy(x: size.height, y: 0)
+            transform.scaledBy(x: -1, y: 1)
+            
+        case .up, .down, .left, .right:
+            break
+        }
+        
+        if let ctx = CGContext(data: nil, width: Int(size.width), height: Int(size.height),
+                               bitsPerComponent: cgImage.bitsPerComponent, bytesPerRow: 0, space:cgImage.colorSpace!,
+                               bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) {
+            
+            ctx.concatenate(transform)
+            
+            switch imageOrientation {
+                
+            case .left, .leftMirrored, .right, .rightMirrored:
+                ctx.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.height, height: size.width))
+                
+            default:
+                ctx.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+            }
+            
+            if let finalImage = ctx.makeImage() {
+                return (UIImage(cgImage: finalImage))
+            }
+        }
+        
+        // something failed -- return original
+        print("something failed")
+        return self
+    }
+    
+    func cropToSquare() -> UIImage? {
+        let height = self.size.height
+        let width = self.size.width
+        
+        var crop = CGFloat()
+        
+        if width > height {
+            crop = height
+        }
+        
+        if height > width {
+            crop = width
+        }
+        
+        let rect = CGRect(x: 0,  y: 0, width: crop, height: crop)
+        let imageRect = self.cgImage!.cropping(to: rect)
+        let image = UIImage(cgImage: imageRect!, scale: self.scale,
+                            orientation: self.imageOrientation)
+        print("croped to square")
+        return image
+    }
+}
 
 class HomeController: UITableViewController, UIImagePickerControllerDelegate,
     UINavigationControllerDelegate {
@@ -24,8 +114,7 @@ class HomeController: UITableViewController, UIImagePickerControllerDelegate,
        
         imagesDirectoryPath = documentDirectorPath.appending("/ImagePicker")
         var objcBool:ObjCBool = true
-        let isExist = FileManager.default.fileExists(atPath: imagesDirectoryPath,
-                                                     isDirectory: &objcBool)
+        let isExist = FileManager.default.fileExists(atPath: imagesDirectoryPath, isDirectory: &objcBool)
         
         if isExist == false{
             do{
@@ -74,14 +163,13 @@ class HomeController: UITableViewController, UIImagePickerControllerDelegate,
         }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var imagePath: String = NSDate().description
         imagePath = imagePath.replacingOccurrences(of: " ", with: "")
         imagePath = imagesDirectoryPath.appending("/\(imagePath).png")
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            let data: Data? = UIImagePNGRepresentation(pickedImage)
+            let data: Data? = UIImagePNGRepresentation(pickedImage.fixOrientation().cropToSquare()!)
             FileManager.default.createFile(atPath: imagePath, contents: data,
                                                                 attributes: nil)
             print("saved image")
@@ -107,8 +195,8 @@ class HomeController: UITableViewController, UIImagePickerControllerDelegate,
                 for image in titles {
                     let data: Data? = FileManager.default.contents(atPath:
                         imagesDirectoryPath.appending("/\(image)"))
-                    let image: UIImage! = UIImage(data: data!)
-                    theImages.append(image!)
+                    let image: UIImage! =  UIImage(data: data!)
+                    theImages.append(image)
                 }
 
             }
@@ -125,11 +213,10 @@ class HomeController: UITableViewController, UIImagePickerControllerDelegate,
         return images.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath:
-        IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
-        let image = images[indexPath.row] as UIImage
+        let image = images[indexPath.row].fixOrientation() as UIImage
         let imageView = UIImageView(image: image)
         imageView.frame = CGRect(x: 10, y: 10, width: 100, height: 100)
         cell?.addSubview(imageView)
@@ -141,6 +228,11 @@ class HomeController: UITableViewController, UIImagePickerControllerDelegate,
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "puzzleView") as! PuzzleController
         vc.image = images[indexPath.row]
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        print("recived memory warning")
     }
 }
 

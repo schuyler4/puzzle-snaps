@@ -80,7 +80,6 @@ class PuzzleController: UIViewController {
     
     @IBOutlet var imageButtons: [Any]!
     
-    var imageViews = [UIImageView]()
     var positions = Array<Int>()
     var blankPostion = Dictionary<String, CGFloat>()
     var scrabling = false
@@ -88,41 +87,60 @@ class PuzzleController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageButtons.insert(contentsOf: [0], at: 0)
+        imageButtons?.insert(contentsOf: [0], at: 0)
         
-        for i in 0...imageButtons.count - 1 {
-            if let btn = imageButtons[i] as? UIButton {
-                print(image.split()[i - 1])
-                btn.setBackgroundImage(image.split()[i - 1], for: .normal)
-                btn.setTitle("", for: .normal)
+        if imageButtons != nil {
+            for i in 0...imageButtons.count - 1 {
+                if let btn = imageButtons[i] as? UIButton {
+                    print(image.split()[i - 1])
+                    btn.setBackgroundImage(image.split()[i - 1], for: .normal)
+                }
+            }
+            
+            for button in imageButtons {
+                if let btn = button as? UIButton {
+                    let downGesture = UISwipeGestureRecognizer(target: self, action:
+                        #selector(self.imageButtonSwiped(_:)))
+                    downGesture.direction = .down
+                    
+                    let upGesture = UISwipeGestureRecognizer(target: self, action:
+                        #selector(self.imageButtonSwiped(_:)))
+                    upGesture.direction = .up
+                    
+                    let rightGesture = UISwipeGestureRecognizer(target: self,
+                                    action: #selector(self.imageButtonSwiped(_:)))
+                    rightGesture.direction = .right
+                    
+                    let leftGesture = UISwipeGestureRecognizer(target: self,
+                                    action: #selector(self.imageButtonSwiped(_:)))
+                    leftGesture.direction = .left
+                    
+                    
+                    btn.addGestureRecognizer(downGesture)
+                    btn.addGestureRecognizer(upGesture)
+                    btn.addGestureRecognizer(rightGesture)
+                    btn.addGestureRecognizer(leftGesture)
+                    btn.setTitle("", for: .normal)
+                }
             }
         }
+    }
+    
+    func getPositionData() -> String {
+        var data: Array<Array<String>> = []
         
-        for button in imageButtons {
-            if let btn = button as? UIButton {
-                let downGesture = UISwipeGestureRecognizer(target: self, action:
-                                    #selector(self.imageButtonDown(_:)))
-                downGesture.direction = .down
-        
-                let upGesture = UISwipeGestureRecognizer(target: self, action:
-                                #selector(self.imageButtonDown(_:)))
-                upGesture.direction = .up
-        
-                let rightGesture = UISwipeGestureRecognizer(target: self,
-                                action: #selector(self.imageButtonDown(_:)))
-                rightGesture.direction = .right
-        
-                let leftGesture = UISwipeGestureRecognizer(target: self,
-                                action: #selector(self.imageButtonDown(_:)))
-                leftGesture.direction = .left
-
-        
-                btn.addGestureRecognizer(downGesture)
-                btn.addGestureRecognizer(upGesture)
-                btn.addGestureRecognizer(rightGesture)
-                btn.addGestureRecognizer(leftGesture)
+        if imageButtons != nil {
+            for button in imageButtons {
+                if let imageBtn = button as? UIButton {
+                    let o = imageBtn.frame.origin
+                    data.append([String(describing: o.x), String(describing: o.y)])
+                }
             }
+        } else {
+            return "none"
         }
+    
+        return String(describing: data)
     }
     
     @IBAction func scrambleButtonClicked(_ sender: Any) {
@@ -135,7 +153,8 @@ class PuzzleController: UIViewController {
         let rounds = randomInt(min: 30, max: 50)
         
         var blankX = CGFloat(142 - 91 - 8)
-        var blankY = CGFloat(284 - 87 - 8)
+        var blankY = CGFloat(284 -
+            87 - 8)
         
         for _ in 0...rounds {
             var possibleSwitch = [Int]()
@@ -159,22 +178,23 @@ class PuzzleController: UIViewController {
 
             let switchIndex = possibleSwitch[Int(arc4random_uniform(
                 UInt32(possibleSwitch.count)))]
-            swap(&imageButtons[switchIndex], &imageButtons[blankIndex!])
-            let beforeX = (imageButtons[switchIndex] as! UIButton).frame.origin.x
-            let beforeY = (imageButtons[switchIndex] as! UIButton).frame.origin.y
-            (imageButtons[switchIndex] as! UIButton).frame.origin.x = CGFloat(blankX)
-            (imageButtons[switchIndex] as! UIButton).frame.origin.y = CGFloat(blankY)
-            blankX = beforeX
-            blankY = beforeY
             
-            print(blankX)
-            print(blankY)
-            print(imageButtons[switchIndex])
+            if let button = imageButtons[switchIndex] as? UIButton {
+                var beforeX = CGFloat()
+                var beforeY = CGFloat()
+                beforeX = button.frame.origin.x
+                beforeY = button.frame.origin.y
+                button.frame.origin.x = CGFloat(blankX)
+                button.frame.origin.y = CGFloat(blankY)
+                blankX = beforeX
+                blankY = beforeY
+                
+                swap(&imageButtons[switchIndex], &imageButtons[blankIndex!])
+            }
         }
-       
     }
     
-    func imageButtonDown(_ gesture: UIGestureRecognizer) {
+    func imageButtonSwiped(_ gesture: UIGestureRecognizer) {
         
         let blankIndex = imageButtons.findInt(element: 0)
         let buttonIndex = imageButtons.findButton(element: gesture.view as! UIButton)

@@ -12,9 +12,25 @@ import UIKit
 
 class homeControllerTests: XCTestCase {
     
-    func testLoadImage() {
-        let viewController = HomeController()
-        XCTAssert(viewController.loadImages().count > 0)
+    var homeController: HomeController!
+    
+    override func setUp() {
+        super.setUp()
+        
+        homeController = HomeController()
     }
     
+    func testViewDidLoad() {
+        homeController.viewDidLoad()
+        
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)
+        let documentDirectorPath:String = paths[0]
+        
+        XCTAssert(homeController.imagesDirectoryPath == documentDirectorPath.appending("/ImagePicker"))
+        XCTAssert(homeController.images.count > 0)
+    }
+    
+    func testLoadImage() {
+        XCTAssert(homeController.loadImages().count > 0)
+    }
 }
