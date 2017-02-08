@@ -70,8 +70,7 @@ extension UIImage {
             }
         }
         
-        // something failed -- return original
-        print("something failed")
+       
         return self
     }
     
@@ -93,7 +92,7 @@ extension UIImage {
         let imageRect = self.cgImage!.cropping(to: rect)
         let image = UIImage(cgImage: imageRect!, scale: self.scale,
                             orientation: self.imageOrientation)
-        print("croped to square")
+        
         return image
     }
 }
@@ -117,17 +116,13 @@ class HomeController: UITableViewController, UIImagePickerControllerDelegate,
         let isExist = FileManager.default.fileExists(atPath: imagesDirectoryPath, isDirectory: &objcBool)
         
         if isExist == false{
-            do{
-                try FileManager.default.createDirectory(atPath:
+                try? FileManager.default.createDirectory(atPath:
                     imagesDirectoryPath, withIntermediateDirectories: true,
                                                         attributes: nil)
-            }catch{
-                print("Something went wrong while creating a new folder")
-            }
         }
         
         images = loadImages()
-        
+        images.remove(at: 0)
     }
     
     var pickedImage: UIImage = UIImage()
@@ -145,21 +140,6 @@ class HomeController: UITableViewController, UIImagePickerControllerDelegate,
                                     preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func cameraRollButtonOnClick(_ sender: Any) {
-        if !UIImagePickerController.isSourceTypeAvailable(
-            UIImagePickerControllerSourceType.photoLibrary) {
-            print("photo library not avalible")
-        } else {
-            let imagePicker: UIImagePickerController = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.allowsEditing = false
-            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-            images = loadImages()
-            tableView.reloadData()
-            self.present(imagePicker, animated: true, completion: nil)
         }
     }
     
@@ -216,10 +196,8 @@ class HomeController: UITableViewController, UIImagePickerControllerDelegate,
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
-        let image = images[indexPath.row].fixOrientation() as UIImage
-        let imageView = UIImageView(image: image)
-        imageView.frame = CGRect(x: 10, y: 10, width: 100, height: 100)
-        cell?.addSubview(imageView)
+        let image = images[indexPath.row]
+        cell?.imageView?.image = image
         
         return cell!
     }

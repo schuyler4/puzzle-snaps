@@ -79,10 +79,12 @@ class PuzzleController: UIViewController {
     var image: UIImage = UIImage()
     
     @IBOutlet var imageButtons: [Any]!
+    @IBOutlet var scrambleButton: UIButton!
     
-    var positions = Array<Int>()
-    var blankPostion = Dictionary<String, CGFloat>()
-    var scrabling = false
+    var positions: Array<Int>  = Array<Int>()
+    var blankPostion :Dictionary<String, CGFloat> = Dictionary<String, CGFloat>()
+    var scrambled: Bool = false
+    var imageSpacing: CGFloat = 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,7 +94,6 @@ class PuzzleController: UIViewController {
         if imageButtons != nil {
             for i in 0...imageButtons.count - 1 {
                 if let btn = imageButtons[i] as? UIButton {
-                    print(image.split()[i - 1])
                     btn.setBackgroundImage(image.split()[i - 1], for: .normal)
                 }
             }
@@ -144,7 +145,6 @@ class PuzzleController: UIViewController {
     }
     
     @IBAction func scrambleButtonClicked(_ sender: Any) {
-        scrabling = true
         
         func randomInt(min: Int, max:Int) -> Int {
             return min + Int(arc4random_uniform(UInt32(max - min + 1)))
@@ -152,76 +152,61 @@ class PuzzleController: UIViewController {
         
         let rounds = randomInt(min: 30, max: 50)
         
-        var blankX = CGFloat(142 - 91 - 8)
-        var blankY = CGFloat(284 -
-            87 - 8)
-        
         for _ in 0...rounds {
-            var possibleSwitch = [Int]()
-            let blankIndex = imageButtons.findInt(element: 0)
-
-            if imageButtons.indices.contains(blankIndex! - 1) {
-                possibleSwitch.append(blankIndex! - 1)
-            }
+            let firstIndex = randomInt(min: 0, max: imageButtons.count - 1)
+            let secoundIndex = randomInt(min: 0, max: imageButtons.count - 1)
             
-            if imageButtons.indices.contains(blankIndex! + 1) {
-                possibleSwitch.append(blankIndex! + 1)
-            }
+            let firstButton = imageButtons[firstIndex]
+            let secoundButton = imageButtons[secoundIndex]
             
-            if imageButtons.indices.contains(blankIndex! - 3) {
-                possibleSwitch.append(blankIndex! - 3)
-            }
-            
-            if imageButtons.indices.contains(blankIndex! + 3) {
-                possibleSwitch.append(blankIndex! + 3)
-            }
-
-            let switchIndex = possibleSwitch[Int(arc4random_uniform(
-                UInt32(possibleSwitch.count)))]
-            
-            if let button = imageButtons[switchIndex] as? UIButton {
-                var beforeX = CGFloat()
-                var beforeY = CGFloat()
-                beforeX = button.frame.origin.x
-                beforeY = button.frame.origin.y
-                button.frame.origin.x = CGFloat(blankX)
-                button.frame.origin.y = CGFloat(blankY)
-                blankX = beforeX
-                blankY = beforeY
-                
-                swap(&imageButtons[switchIndex], &imageButtons[blankIndex!])
+            if firstIndex != secoundIndex {
+                if let button1 = firstButton as? UIButton {
+                    if let button2 = secoundButton as? UIButton {
+                        let firstPos: CGPoint = button1.frame.origin
+                        let secoundPos: CGPoint = button2.frame.origin
+                        
+                        button1.frame.origin = secoundPos
+                        button2.frame.origin = firstPos
+                        swap(&imageButtons[firstIndex], &imageButtons[secoundIndex])
+                    }
+                }
             }
         }
+        
+        scrambled = true
+        scrambleButton.isHidden = true
+        print("got through")
     }
     
     func imageButtonSwiped(_ gesture: UIGestureRecognizer) {
         
         let blankIndex = imageButtons.findInt(element: 0)
         let buttonIndex = imageButtons.findButton(element: gesture.view as! UIButton)
-        
     
         let width = gesture.view?.frame.width
         let height = gesture.view?.frame.height
         
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            if swipeGesture.direction == UISwipeGestureRecognizerDirection.right
-                && buttonIndex! + 1 == blankIndex! {
-                gesture.view?.frame.origin.x += width! + 8
-                swap(&imageButtons[buttonIndex!], &imageButtons[blankIndex!])
-            } else if swipeGesture.direction == UISwipeGestureRecognizerDirection.down
-                && buttonIndex! + 3 == blankIndex! {
-                gesture.view?.frame.origin.y += height! + 8
-                swap(&imageButtons[buttonIndex!], &imageButtons[blankIndex!])
-            } else if swipeGesture.direction == UISwipeGestureRecognizerDirection.left
-                && buttonIndex! - 1 == blankIndex {
-                gesture.view?.frame.origin.x -= width! + 8
-                swap(&imageButtons[buttonIndex!], &imageButtons[blankIndex!])
-            } else if swipeGesture.direction == UISwipeGestureRecognizerDirection.up
-                && buttonIndex! - 3 == blankIndex! {
-                gesture.view?.frame.origin.y -= height! + 8
-                swap(&imageButtons[buttonIndex!], &imageButtons[blankIndex!])
+        if scrambled {
+            if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+                if swipeGesture.direction == UISwipeGestureRecognizerDirection.right
+                    && buttonIndex! + 1 == blankIndex! {
+                    gesture.view?.frame.origin.x += width! + imageSpacing
+                    swap(&imageButtons[buttonIndex!], &imageButtons[blankIndex!])
+                } else if swipeGesture.direction == UISwipeGestureRecognizerDirection.down
+                    && buttonIndex! + 3 == blankIndex! {
+                    gesture.view?.frame.origin.y += height! + imageSpacing
+                    swap(&imageButtons[buttonIndex!], &imageButtons[blankIndex!])
+                } else if swipeGesture.direction == UISwipeGestureRecognizerDirection.left
+                    && buttonIndex! - 1 == blankIndex {
+                    gesture.view?.frame.origin.x -= width! + imageSpacing
+                    swap(&imageButtons[buttonIndex!], &imageButtons[blankIndex!])
+                } else if swipeGesture.direction == UISwipeGestureRecognizerDirection.up
+                    && buttonIndex! - 3 == blankIndex! {
+                    gesture.view?.frame.origin.y -= height! + imageSpacing
+                    swap(&imageButtons[buttonIndex!], &imageButtons[blankIndex!])
+                }
+                    
             }
-                
         }
     }
 
